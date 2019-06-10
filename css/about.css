@@ -1,0 +1,43 @@
+.video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: 1;
+}
+
+html, body, div, h1, p, a, video, h2, nav, footer, section {
+    z-index: 2;
+    position: relative;
+}
+
+.content {
+    z-index: 2;
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+
+    color: #e9e9e9;
+}
+
+h1 {
+    color: #ffffff;
+}
+
+@media (max-width: 767px) {
+    body {
+        background: red;
+    }
+
+    .video {
+        display: none;
+    }
+}
+
+.bar {
+    fill: steelblue;
+}

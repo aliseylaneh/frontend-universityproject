@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>شرکت برنامه نویسان فنی و حرفه ای</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+    <link href='http://www.fontonline.ir/css/BYekan.css' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/business-casual.min.css" rel="stylesheet">
+    <link href="css/about.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+<h1 class="site-heading text-center text-white d-none d-lg-block">
+
+    <span class="site-heading-lower">برنامه نویسان فنی و حرفه ای</span>
+</h1>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+
+
+    <div class="container">
+        <a class="navbar-brand text-uppercase text-expanded font-weight-bold d-lg-none" href="#">Start Bootstrap</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item active px-lg-4">
+                    <a class="nav-link text-uppercase text-expanded" href="about.html">درباره ما
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item px-lg-4">
+                    <a class="nav-link text-uppercase text-expanded" href="contact.html">تماس با ما</a>
+                </li>
+                <li class="nav-item  px-lg-4">
+                    <a class="nav-link text-uppercase text-expanded" href="products.html">محصولات</a>
+                </li>
+                <li class="nav-item px-lg-4">
+                    <a class="nav-link text-uppercase text-expanded" href="index.html">صفحه اصلی</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div align="center">
+    <div align="center"
+         style="font-family: BYekan, 'BYekan', tahoma;background:rgba(255, 255, 255, .85); border-radius: 5px; width: 700px ; padding: 20px; margin-top: 20px;align-self: center">
+
+        شرکت برنامه نویسان فنی و حرفه ای کار خود را در حوزه ی برنامه نویسی و فروش محصولات مربوط به<br>کامپیوتر و قطعات
+        گیمینگ در سال 97 آغاز کرده است.<br>این شرکت برای رسیدن به هدف خود در راستای برنامه نویسی همچنان تلاش می کند تا
+        به
+        یکی از قطب های
+        برنامه نویسی در ایران تبدیل شود
+
+    </div>
+</div>
+<script src="d3/d3.min.js"></script>
+<script>
+
+    // set the dimensions and margins of the graph
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+    // set the ranges
+    var x = d3.scaleBand()
+        .range([0, width])
+        .padding(0.1);
+    var y = d3.scaleLinear()
+        .range([height, 0]);
+
+    // append the svg object to the body of the page
+    // append a 'group' element to 'svg'
+    // moves the 'group' element to the top left margin
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+    // get the data
+    d3.csv("sales.csv", function (error, data) {
+        if (error) throw error;
+
+        // format the data
+        data.forEach(function (d) {
+            d.sales = +d.sales;
+        });
+
+        // Scale the range of the data in the domains
+        x.domain(data.map(function (d) {
+            return d.salesperson;
+        }));
+        y.domain([0, d3.max(data, function (d) {
+            return d.sales;
+        })]);
+
+        // append the rectangles for the bar chart
+        svg.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function (d) {
+                return x(d.salesperson);
+            })
+            .attr("width", x.bandwidth())
+            .attr("y", function (d) {
+                return y(d.sales);
+            })
+            .attr("height", function (d) {
+                return height - y(d.sales);
+            });
+
+        // add the x Axis
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x));
+
+        // add the y Axis
+        svg.append("g")
+            .call(d3.axisLeft(y));
+
+    });
+
+</script>
+
+<footer class="footer text-faded text-center py-5">
+    <div class="container">
+        <p class="m-0 small">تمام حقوق برای شرکت برنامه نویسان فنی و حرفه ای محفوظ می باشد</p>
+    </div>
+</footer>
+
+<video class="video" autoplay muted loop>
+    <source src="video/b.mp4" type="video/mp4">
+</video>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
